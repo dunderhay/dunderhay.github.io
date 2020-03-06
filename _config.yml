@@ -4,7 +4,7 @@ description: "A spot for me to write about stuff and things"
 
 # Jekyll settings
 permalink: /:categories/:year/:month/:day/:title          # see https://jekyllrb.com/docs/permalinks/
-paginate: 4                  # number of articles per page, remove to disable pagination
+# paginate: 4                  # number of articles per page, remove to disable pagination
 # excerpt_separator: "\n\n\n"  # indicates the end of the excerpt by two blank lines
 
 # Page settings
@@ -14,7 +14,7 @@ post_footer: true            # show previous and next links at the end of each p
 date_format: "%B %d, %Y"     # see http://shopify.github.io/liquid/filters/date/
 
 # Theme settings
-style: default               # choose between "default", "contrast" and "minimal"
+style: minimal               # choose between "default", "contrast" and "minimal"
 dark_theme: true             # enables dark mode
 
 navigation:                  # (optional) site navigation in the header
@@ -22,6 +22,7 @@ navigation:                  # (optional) site navigation in the header
 
 icons:                       # (optional) icons in the header, see http://fontawesome.com/icons
   github: "https://github.com/dunderhay"
+  twitter: "https://twitter.com/dunderhay"
 
 plugins:
  - jekyll-paginate

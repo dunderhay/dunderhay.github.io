@@ -12,8 +12,8 @@ show_title: false            # always keep the site title visible
 
 # Styling
 
-dark_header: true            # always keep the header dark
-minimal: false               # use simpler style
+dark_header: true
+minimal: true
 
 # Menu
 
@@ -24,7 +24,7 @@ external:
   - {title: Github, icon: github, url: "https://github.com/dunderhay"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 
-remote_theme: niklasbuschmann/contrast@v2.7
+remote_theme: dunderhay/contrast@v2.7
 
 plugins:
   - jekyll-remote-theme

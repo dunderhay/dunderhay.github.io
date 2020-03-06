@@ -24,7 +24,7 @@ external:
   - {title: Github, icon: github, url: "https://github.com/dunderhay"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 
-remote_theme: dunderhay/contrast@v2.7
+remote_theme: niklasbuschmann/contrast@v2.7
 
 plugins:
   - jekyll-remote-theme

@@ -14,6 +14,7 @@ show_title: false            # always keep the site title visible
 
 dark_header: true           # always keep the header dark
 minimal: true               # use simpler style
+dark_theme: true            # use dark theme
 
 # Menu
 

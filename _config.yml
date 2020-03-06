@@ -2,31 +2,30 @@ title: "Phish's Blog"
 author: "🐟"
 description: "A spot for me to write about stuff and things"
 
-# Jekyll settings
-permalink: /:categories/:year/:month/:day/:title          # see https://jekyllrb.com/docs/permalinks/
-# paginate: 4                  # number of articles per page, remove to disable pagination
-# excerpt_separator: "\n\n\n"  # indicates the end of the excerpt by two blank lines
+# Layout
 
-# Page settings
-show_excerpts: true         # show article previews on the home page instead of headlines
-hide_title: false            # remove site heading in the header
-post_footer: true            # show previous and next links at the end of each post
-date_format: "%B %d, %Y"     # see http://shopify.github.io/liquid/filters/date/
+sidebar: true                # show a sidebar instead of the usual header
+show_excerpts: false         # show article excerpts on the home page
+show_related: true           # show the previous and next links after every post
+show_description: true       # show the site description in the sidebar
+show_title: false            # always keep the site title visible
 
-# Theme settings
-style: minimal               # choose between "default", "contrast" and "minimal"
-dark_theme: true             # enables dark mode
+# Styling
 
-navigation:                  # (optional) site navigation in the header
-  - index.html
+dark_header: true           # always keep the header dark
+minimal: false               # use simpler style
 
-icons:                       # (optional) icons in the header, see http://fontawesome.com/icons
-  github: "https://github.com/dunderhay"
-  twitter: "https://twitter.com/dunderhay"
+# Menu
+
+navigation:
+  - {file: "index.html", icon: home}
+  - {file: "README.md", icon: address-card}
+
+external:                    # see http://fontawesome.com/icons
+  - {title: Github, icon: github, url: "https://github.com/dunderhay"}
+  - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 
 plugins:
- - jekyll-paginate
- - jekyll-default-layout
  - jekyll-remote-theme
 
-remote_theme: dunderhay/contrast
+remote_theme: niklasbuschmann/contrast@v2.6

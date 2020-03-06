@@ -13,15 +13,14 @@ show_title: false            # always keep the site title visible
 # Styling
 
 dark_header: true           # always keep the header dark
-minimal: false               # use simpler style
+minimal: true               # use simpler style
 
 # Menu
 
 navigation:
   - {file: "index.html", icon: home}
-  - {file: "README.md", icon: address-card}
 
-external:                    # see http://fontawesome.com/icons
+external:
   - {title: Github, icon: github, url: "https://github.com/dunderhay"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 

@@ -27,9 +27,6 @@ external:                    # see http://fontawesome.com/icons
 
 encoding: UTF-8
 
-plugins:
- - jekyll-remote-theme
-
 # Theme
 remote_theme: dunderhay/contrast
 

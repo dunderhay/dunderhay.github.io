@@ -19,15 +19,17 @@ minimal: false               # use simpler style
 
 navigation:
   - {file: "index.html", icon: home}
-  - {file: "README.md", icon: address-card}
 
 external:                    # see http://fontawesome.com/icons
   - {title: Github, icon: github, url: "https://github.com/niklasbuschmann/contrast"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 
+# Encoding 
+
 encoding: UTF-8
 
 # Theme
+
 remote_theme: dunderhay/contrast
 
 plugins:

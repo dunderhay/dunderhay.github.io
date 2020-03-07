@@ -12,20 +12,27 @@ show_title: false            # always keep the site title visible
 
 # Styling
 
-dark_header: true
-minimal: false
+dark_header: false           # always keep the header dark
+minimal: false               # use simpler style
 
 # Menu
 
 navigation:
   - {file: "index.html", icon: home}
+  - {file: "README.md", icon: address-card}
 
-external:
-  - {title: Github, icon: github, url: "https://github.com/dunderhay"}
+external:                    # see http://fontawesome.com/icons
+  - {title: Github, icon: github, url: "https://github.com/niklasbuschmann/contrast"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 
+encoding: UTF-8
+
+plugins:
+ - jekyll-remote-theme
+
 # Theme
-remote_theme: niklasbuschmann/contrast@latest
+remote_theme: dunderhay/contrast
 
 plugins:
   - jekyll-remote-theme
+

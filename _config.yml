@@ -21,7 +21,7 @@ navigation:
   - {file: "index.html", icon: home}
 
 external:                    # see http://fontawesome.com/icons
-  - {title: Github, icon: github, url: "https://github.com/niklasbuschmann/contrast"}
+  - {title: Github, icon: github, url: "https://github.com/dunderhay"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/dunderhay"}
 
 # Encoding 

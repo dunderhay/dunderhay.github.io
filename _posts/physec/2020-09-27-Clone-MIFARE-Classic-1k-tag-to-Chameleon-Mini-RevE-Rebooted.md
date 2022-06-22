@@ -1,5 +1,11 @@
-# How to clone a MIFARE Classic 1K tag to Chameleon Mini RevE Rebooted
+---
+title: "Clone Mifare Classic 1k Tag To Chameleon Mini RevE Rebooted"
+layout: post
+tags: [physical-security access control]
+excerpt: "How to clone Mifare Classic 1k tags onto the Chameleon Mini RevE Rebooted"
+---
 
+# How to clone a MIFARE Classic 1K tag to Chameleon Mini RevE Rebooted
 
 The official github repository for the [Chameleon Mini RevE Rebooted](https://github.com/iceman1001/ChameleonMini-rebooted). Other revisions of the hardware use different github projects. The RevE Rebooted looks like the image below:
 

@@ -36,22 +36,22 @@ The list above does not cover installation of the lock. During physical engageme
 Before getting into the details, let's quickly cover some of the basic parts of a pin tumbler lock and common terminology. These terms and additional useful information can be found over at the lockwiki - http://lockwiki.com/index.php/Pin-tumbler
 
 ##### Key Pins (Bottom Pins)
-The pins that are touched by the key. Key pins are sized differently corresponding to the different depth cuts on the key. When the correct key is inserted, the tops of all of the key pins are aligned at the shear line, allowing the plug to rotate.
+> The pins that are touched by the key. Key pins are sized differently corresponding to the different depth cuts on the key. When the correct key is inserted, the tops of all of the key pins are aligned at the shear line, allowing the plug to rotate.
 
 ##### Driver Pins (Top Pins)
-The pins placed between the key pins and the springs. In their resting position, the driver pins block rotation of the plug. In more advanced pin-tumblers, driver pins may be sized inverse to the key pins to defend against decoding and impressioning attacks, as well as overlifting techniques such as comb picking.
+> The pins placed between the key pins and the springs. In their resting position, the driver pins block rotation of the plug. In more advanced pin-tumblers, driver pins may be sized inverse to the key pins to defend against decoding and impressioning attacks, as well as overlifting techniques such as comb picking.
 
 ##### Pin Chambers
-Vertical chambers that the pin stacks rest in and move up and down in.
+> Vertical chambers that the pin stacks rest in and move up and down in.
 
 ##### Springs
-Springs placed above the pin stacks push pins into their resting position, ensuring that pins cannot be trapped above the shear line while the plug is in the default position.
+> Springs placed above the pin stacks push pins into their resting position, ensuring that pins cannot be trapped above the shear line while the plug is in the default position.
 
 ##### Plug (Core)
-The plug is the inner piece of the lock that rotates upon insertion and turning of the correct key. The plug is connected to the cam to actuate the bolt mechanism when rotated.
+> The plug is the inner piece of the lock that rotates upon insertion and turning of the correct key. The plug is connected to the cam to actuate the bolt mechanism when rotated.
 
 ##### Cylinder (Bible)
-The cylinder is the outer piece of the lock that houses the upper pin chambers and the plug. Driver pins and springs are trapped in the cylinder's pin chambers when the correct key is used and the plug rotated.
+> The cylinder is the outer piece of the lock that houses the upper pin chambers and the plug. Driver pins and springs are trapped in the cylinder's pin chambers when the correct key is used and the plug rotated.
 
 <p align="center">
   <img width="80%" src="/assets/images/physec-locks/pins_overview.jpeg"/>

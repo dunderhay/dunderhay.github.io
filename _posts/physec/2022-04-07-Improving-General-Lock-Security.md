@@ -1,5 +1,5 @@
 ---
-title: "Modifying Locks"
+title: "Modifying Locks to Improve Security"
 layout: post
 tags: [physical-security locks]
 excerpt: "Cheap locks are not generally known for being very robust or effective against a suitably-skilled attacker and often have a plethora of flaws. There are a few relatively simple things that can be done to improve the security of a lower budget residential lock, which I will cover in this post."
@@ -64,10 +64,6 @@ Since all the information in this post is already available online, my approach 
 I pinned up my practice lock with individual security pins, as well as various combinations of security pins and then attempt to pick the lock, to observe and validate how pins behave and find combinations that work well together.
 
 The intention of improving a lock's security is to not only outright stop an unskilled attack such as raking or bumping, but also to provide confusing feedback to an experienced picker and increase the time, effort and tools required to pick the lock.
-
-### QA FEEDBACK (logan)
-
-- i'd possibly also consider a little nod to "challenge locks" made by big nerds specifically to challenge each other and explore interesting new ways of increasing pick resistance
 
 
 ## Modifications
@@ -207,8 +203,7 @@ additional keys, unless an authorised party has explicitly allowed them to.
   <img width="50%" src="/assets/images/physec-locks/restricted_key.jpeg"/>
 </p>
 
-Ethical locksmiths will honor this and refuse to duplicate keys marked as restricted.  However, there are advanced key cutting machines which can essentially copy a key (similar to 3d printing), which may be used to copy a restricted key.
-__QA: Remove this or add more info / links?__
+Ethical locksmiths will honour this and refuse to duplicate keys marked as restricted.  However, there are advanced key cutting machines which can essentially copy a key (similar to 3d printing), which may be used to copy a restricted key.
 
 
 ### Replace the Existing Core with a Better One
@@ -219,7 +214,6 @@ This option is probably the most expensive enhancement you could make, and you c
 </p>
 
 The image above is from The Lockpicking Lawyer (https://www.youtube.com/watch?v=GncYzuRMtb8), and despite how restrictive some of those keyways are, they may still be pickable by skilled individuals.
-__QA: remove this?__
 
 
 ## Summary

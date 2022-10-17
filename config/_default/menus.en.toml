@@ -1,0 +1,14 @@
+[[main]]
+  name = "Blog"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  name = "Github"
+  url = "https://github.com/dunderhay/"
+  weight = 20
+
+ [[footer]]
+   #name = "Tags"
+   #pageRef = "tags"
+   #weight = 10

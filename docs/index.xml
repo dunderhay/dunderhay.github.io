@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>phish</title>
+    <link>https://dunderhay.github.io/</link>
+    <description>Recent content on phish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AD CS NTLM Relay Attack from Linux</title>
+      <link>https://dunderhay.github.io/posts/ad/attacking-adcs-esc8/</link>
+      <pubDate>Fri, 17 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/ad/attacking-adcs-esc8/</guid>
+      <description>Guide to exploiting &amp;lsquo;ESC8 — NTLM Relay to AD CS HTTP Endpoints&amp;rsquo; from Linux to compromise a domain</description>
+      
+    </item>
+    
+    <item>
+      <title>Modifying Locks to Improve Security</title>
+      <link>https://dunderhay.github.io/posts/physec/improving-general-lock-security/</link>
+      <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/physec/improving-general-lock-security/</guid>
+      <description>A quick look at some basic pin-tumbler locks and how we can modify them to make them a bit more pick resistant</description>
+      
+    </item>
+    
+    <item>
+      <title>CCTV: Now You See Me, Now You Don&#39;t</title>
+      <link>https://dunderhay.github.io/posts/research/v380-ip-camera/</link>
+      <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/research/v380-ip-camera/</guid>
+      <description>How to take over a live IoT camera stream</description>
+      
+    </item>
+    
+    <item>
+      <title>Clone Mifare Classic 1k Tag To Chameleon Mini RevE Rebooted</title>
+      <link>https://dunderhay.github.io/posts/physec/clone-mifare-classic-1k-tag-to-chameleon-mini-reve-rebooted/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/physec/clone-mifare-classic-1k-tag-to-chameleon-mini-reve-rebooted/</guid>
+      <description>How to clone Mifare Classic 1k tags onto the Chameleon Mini RevE Rebooted</description>
+      
+    </item>
+    
+    <item>
+      <title>Path Traversal in Adobe ColdFusion (CVE-2019-8074)</title>
+      <link>https://dunderhay.github.io/posts/bugs/cve-2019-8074/</link>
+      <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/bugs/cve-2019-8074/</guid>
+      <description>Access Control Bypass via Path Taversal</description>
+      
+    </item>
+    
+    <item>
+      <title>Stored XSS in Piwigo 2.6.0 -&gt; 2.9.0 beta1</title>
+      <link>https://dunderhay.github.io/posts/bugs/piwigo-stored-xss/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/bugs/piwigo-stored-xss/</guid>
+      <description>A weaponized stored XSS example</description>
+      
+    </item>
+    
+    <item>
+      <title>Exploiting vulnserver: kstet</title>
+      <link>https://dunderhay.github.io/posts/vulnserver/kstet/</link>
+      <pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/vulnserver/kstet/</guid>
+      <description>Egg Hunter</description>
+      
+    </item>
+    
+    <item>
+      <title>Exploiting vulnserver: gmon</title>
+      <link>https://dunderhay.github.io/posts/vulnserver/gmon/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/vulnserver/gmon/</guid>
+      <description>SEH Overflow</description>
+      
+    </item>
+    
+    <item>
+      <title>Exploiting vulnserver: trun</title>
+      <link>https://dunderhay.github.io/posts/vulnserver/trun/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/vulnserver/trun/</guid>
+      <description>Vanilla Stack Overflow</description>
+      
+    </item>
+    
+    <item>
+      <title>Exploiting vulnserver: Intro</title>
+      <link>https://dunderhay.github.io/posts/vulnserver/intro/</link>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/vulnserver/intro/</guid>
+      <description>I am currently doing OSCE / CTP exam preparation exploiting vulnserver.exe</description>
+      
+    </item>
+    
+  </channel>
+</rss>

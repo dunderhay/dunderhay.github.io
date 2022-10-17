@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>locks on phish</title>
+    <link>https://dunderhay.github.io/tags/locks/</link>
+    <description>Recent content in locks on phish</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 07 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/tags/locks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modifying Locks to Improve Security</title>
+      <link>https://dunderhay.github.io/posts/physec/improving-general-lock-security/</link>
+      <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/physec/improving-general-lock-security/</guid>
+      <description>A quick look at some basic pin-tumbler locks and how we can modify them to make them a bit more pick resistant</description>
+    </item>
+    
+  </channel>
+</rss>

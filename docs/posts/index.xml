@@ -97,5 +97,14 @@
       <description>I am currently doing OSCE / CTP exam preparation exploiting vulnserver.exe</description>
     </item>
     
+    <item>
+      <title>PiRAT - Remote Drop Box</title>
+      <link>https://dunderhay.github.io/posts/physec/remotebox/</link>
+      <pubDate>Thu, 23 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/physec/remotebox/</guid>
+      <description>Creating a remote access drop box for red teaming</description>
+    </item>
+    
   </channel>
 </rss>

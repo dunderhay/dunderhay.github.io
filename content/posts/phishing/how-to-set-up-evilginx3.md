@@ -18,7 +18,7 @@ As per the [GitHub page](https://github.com/kgretzky/evilginx2):
 
 Please refer to [documentation](https://help.evilginx.com/) and consider signing up for the [Evilginx Mastery course](https://academy.breakdev.org/evilginx-mastery) to learn how to build custom / advanced phishlets.
 
-It's important to note that phishing is illegal and unethical without proper authorization. This information is provided for educational purposes only, and I strongly discourage any misuse or illegal activities.
+It's important to note that phishing is illegal and unethical without proper authorisation. This information is provided for educational purposes only, and I strongly discourage any misuse or illegal activities.
 
 ## Domain Setup
 
@@ -27,11 +27,11 @@ It's important to note that phishing is illegal and unethical without proper aut
 The domain setup process is fairly simple, but will depend on the domain registrar you use. Here's a general overview of how it typically works:
 
 * **Domain Registration**: Register a domain name for your phishing campaign.
-* **DNS Configuration**: After registering the domain, you need to configure the domain's DNS settings. Evilginx will act the DNS resolver, so you don't need to manually add "A" records for your phishing domain / subdomains yourself. Instead you will change the glue records for your domain. **Note**: this is not supported by all domain registrars. 
+* **DNS Configuration**: After registering the domain, you need to configure the domain's DNS settings. evilginx will act as the DNS resolver, so you don't need to manually add "A" records for your phishing domain / subdomains yourself. Instead you will change the glue records for your domain. **Note**: this is not supported by all domain registrars. 
 
 A glue record contains the IP address of a nameserver, enabling the resolution of a domain when the nameserver is hosted within the same domain. For example, if the domain "example.com" has the nameserver "ns1.example.com", a glue record would provide the necessary IP address for the "ns1.example.com" nameserver to be correctly resolved.
 
-Using Godaddy for example (not an endorsement), with a fake domain `michaelsoft.com` and assuming Evilginx is externally accessible via the following IP address `3.105.197.139`:
+Using Godaddy for example (not an endorsement), with a fake domain `michaelsoft.com` and assuming evilginx is externally accessible via the following IP address `3.105.197.139`:
 	
 **Create hostname records**:
 	
@@ -51,7 +51,7 @@ Keep in mind the following:
 * This script is intended to be run on a fresh ubuntu linux host (I have not tested it on any other OS)
 * You may want to update the version of golang (don't forget to update the checksum too)
 * You may want to use a different terminal multiplexer (tmux instead of byobu)
-* OPSEC: I have removed the lines of source code responsible for setting the `X-Evilginx header` - this may change in future releases of evilginx
+* OPSEC: I have removed the lines of source code responsible for setting the `X-Evilginx:` header - this may change in future releases of evilginx
 * You will need to configure firewall rules to allow inbound connections for HTTPS and DNS traffic
 
 
@@ -92,7 +92,7 @@ login:
   path: '/?auth=2'
 ```
 
-After starting Evilginx, you can set the required values:
+After starting evilginx, you can set the required values:
 
 ```
 config domain <your-phishing-domain>

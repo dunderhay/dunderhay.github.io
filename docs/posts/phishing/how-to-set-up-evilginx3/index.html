@@ -15,7 +15,7 @@
   <meta name="keywords" content="phishing, " />
   
   
-  <link rel="canonical" href="https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/" />
+  <link rel="canonical" href="https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/" />
   
   
   
@@ -64,7 +64,7 @@
   <meta property="og:title" content="How to Set Up Evilginx3" />
 <meta property="og:description" content="Quick tutorial on how to set up evilginx3 phishing framework" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-16T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-07-16T00:00:00+00:00" />
 
@@ -83,7 +83,7 @@
     "description": "Quick tutorial on how to set up evilginx3 phishing framework",
     "abstract": "Quick tutorial on how to set up evilginx3 phishing framework",
     "inLanguage": "en",
-    "url" : "https:\/\/dunderhay.github.io\/posts\/phishing\/evilginx3-setup-tutorial\/",
+    "url" : "https:\/\/dunderhay.github.io\/posts\/phishing\/how-to-set-up-evilginx3\/",
     "author" : {
       "@type": "Person",
       "name": "Daniel Underhay"
@@ -97,7 +97,7 @@
     "keywords": ["phishing"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "701"
+    "wordCount": "702"
   }]
   </script>
 
@@ -435,7 +435,7 @@
   <li class="inline hidden">
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/"
+      href="https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/"
       >How to Set Up Evilginx3</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
@@ -746,7 +746,7 @@
 <p>Please refer to <a href="https://help.evilginx.com/"   target="_blank">
     documentation</a> and consider signing up for the <a href="https://academy.breakdev.org/evilginx-mastery"   target="_blank">
     Evilginx Mastery course</a> to learn how to build custom / advanced phishlets.</p>
-<p>It&rsquo;s important to note that phishing is illegal and unethical without proper authorization. This information is provided for educational purposes only, and I strongly discourage any misuse or illegal activities.</p>
+<p>It&rsquo;s important to note that phishing is illegal and unethical without proper authorisation. This information is provided for educational purposes only, and I strongly discourage any misuse or illegal activities.</p>
 <div id="domain-setup" class="anchor"></div>
 <h2 class="relative group">Domain Setup 
     <span
@@ -773,10 +773,10 @@
 <p>The domain setup process is fairly simple, but will depend on the domain registrar you use. Here&rsquo;s a general overview of how it typically works:</p>
 <ul>
 <li><strong>Domain Registration</strong>: Register a domain name for your phishing campaign.</li>
-<li><strong>DNS Configuration</strong>: After registering the domain, you need to configure the domain&rsquo;s DNS settings. Evilginx will act the DNS resolver, so you don&rsquo;t need to manually add &ldquo;A&rdquo; records for your phishing domain / subdomains yourself. Instead you will change the glue records for your domain. <strong>Note</strong>: this is not supported by all domain registrars.</li>
+<li><strong>DNS Configuration</strong>: After registering the domain, you need to configure the domain&rsquo;s DNS settings. evilginx will act as the DNS resolver, so you don&rsquo;t need to manually add &ldquo;A&rdquo; records for your phishing domain / subdomains yourself. Instead you will change the glue records for your domain. <strong>Note</strong>: this is not supported by all domain registrars.</li>
 </ul>
 <p>A glue record contains the IP address of a nameserver, enabling the resolution of a domain when the nameserver is hosted within the same domain. For example, if the domain &ldquo;example.com&rdquo; has the nameserver &ldquo;ns1.example.com&rdquo;, a glue record would provide the necessary IP address for the &ldquo;ns1.example.com&rdquo; nameserver to be correctly resolved.</p>
-<p>Using Godaddy for example (not an endorsement), with a fake domain <code>michaelsoft.com</code> and assuming Evilginx is externally accessible via the following IP address <code>3.105.197.139</code>:</p>
+<p>Using Godaddy for example (not an endorsement), with a fake domain <code>michaelsoft.com</code> and assuming evilginx is externally accessible via the following IP address <code>3.105.197.139</code>:</p>
 <p><strong>Create hostname records</strong>:</p>
 <p>
 
@@ -824,7 +824,7 @@
 <li>This script is intended to be run on a fresh ubuntu linux host (I have not tested it on any other OS)</li>
 <li>You may want to update the version of golang (don&rsquo;t forget to update the checksum too)</li>
 <li>You may want to use a different terminal multiplexer (tmux instead of byobu)</li>
-<li>OPSEC: I have removed the lines of source code responsible for setting the <code>X-Evilginx header</code> - this may change in future releases of evilginx</li>
+<li>OPSEC: I have removed the lines of source code responsible for setting the <code>X-Evilginx:</code> header - this may change in future releases of evilginx</li>
 <li>You will need to configure firewall rules to allow inbound connections for HTTPS and DNS traffic</li>
 </ul>
 <script type="application/javascript" src="https://gist.github.com/dunderhay/d5fcded54cc88a1b7e12599839b6badb.js"></script>
@@ -866,7 +866,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">login</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;login.microsoftonline.com&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/?auth=2&#39;</span><span class="w">
-</span></span></span></code></pre></div><p>After starting Evilginx, you can set the required values:</p>
+</span></span></span></code></pre></div><p>After starting evilginx, you can set the required values:</p>
 <pre tabindex="0"><code>config domain &lt;your-phishing-domain&gt;
 config ipv4 external &lt;your-vps-ipaddress&gt;
 </code></pre><p>It is recommended to prevent access from unauthorised prying eyes / scanners:</p>
@@ -908,7 +908,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;title=How%20to%20Set%20Up%20Evilginx3"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;title=How%20to%20Set%20Up%20Evilginx3"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
       >
@@ -927,7 +927,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://twitter.com/intent/tweet/?url=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;text=How%20to%20Set%20Up%20Evilginx3"
+      href="https://twitter.com/intent/tweet/?url=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;text=How%20to%20Set%20Up%20Evilginx3"
       title="Tweet on Twitter"
       aria-label="Tweet on Twitter"
       >
@@ -946,7 +946,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://reddit.com/submit/?url=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;resubmit=true&amp;title=How%20to%20Set%20Up%20Evilginx3"
+      href="https://reddit.com/submit/?url=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;resubmit=true&amp;title=How%20to%20Set%20Up%20Evilginx3"
       title="Submit to Reddit"
       aria-label="Submit to Reddit"
       >
@@ -965,7 +965,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://api.whatsapp.com/send?text=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;resubmit=true&amp;title=How%20to%20Set%20Up%20Evilginx3"
+      href="https://api.whatsapp.com/send?text=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;resubmit=true&amp;title=How%20to%20Set%20Up%20Evilginx3"
       title=""
       aria-label=""
       >
@@ -984,7 +984,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://t.me/share/url?url=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;resubmit=true&amp;title=How%20to%20Set%20Up%20Evilginx3"
+      href="https://t.me/share/url?url=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;resubmit=true&amp;title=How%20to%20Set%20Up%20Evilginx3"
       title=""
       aria-label=""
       >
@@ -1003,7 +1003,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://pinterest.com/pin/create/bookmarklet/?url=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;description=How%20to%20Set%20Up%20Evilginx3"
+      href="https://pinterest.com/pin/create/bookmarklet/?url=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;description=How%20to%20Set%20Up%20Evilginx3"
       title="Pin on Pinterest"
       aria-label="Pin on Pinterest"
       >
@@ -1022,7 +1022,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.facebook.com/sharer/sharer.php?u=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;quote=How%20to%20Set%20Up%20Evilginx3"
+      href="https://www.facebook.com/sharer/sharer.php?u=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;quote=How%20to%20Set%20Up%20Evilginx3"
       title="Share on Facebook"
       aria-label="Share on Facebook"
       >
@@ -1041,7 +1041,7 @@ lures get-url 0
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="mailto:?body=https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/&amp;subject=How%20to%20Set%20Up%20Evilginx3"
+      href="mailto:?body=https://dunderhay.github.io/posts/phishing/how-to-set-up-evilginx3/&amp;subject=How%20to%20Set%20Up%20Evilginx3"
       title="Send via email"
       aria-label="Send via email"
       >
@@ -1063,8 +1063,8 @@ lures get-url 0
       </div>
      
      <script>
-        var oid = "views_posts\/phishing\/evilginx3-setup-tutorial.md"
-        var oid_likes = "likes_posts\/phishing\/evilginx3-setup-tutorial.md"
+        var oid = "views_posts\/phishing\/how-to-set-up-evilginx3.md"
+        var oid_likes = "likes_posts\/phishing\/how-to-set-up-evilginx3.md"
       </script>
       
       

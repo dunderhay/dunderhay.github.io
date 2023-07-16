@@ -6,6 +6,7 @@
     <description>Recent content in AD CS on phish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    
     <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/tags/ad-cs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AD CS NTLM Relay Attack from Linux</title>
@@ -14,6 +15,7 @@
       
       <guid>https://dunderhay.github.io/posts/ad/attacking-adcs-esc8/</guid>
       <description>Guide to exploiting &amp;lsquo;ESC8 — NTLM Relay to AD CS HTTP Endpoints&amp;rsquo; from Linux to compromise a domain</description>
+      
     </item>
     
   </channel>

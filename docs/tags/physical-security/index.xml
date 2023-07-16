@@ -6,6 +6,7 @@
     <description>Recent content in physical-security on phish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    
     <lastBuildDate>Thu, 07 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/tags/physical-security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Modifying Locks to Improve Security</title>
@@ -14,6 +15,7 @@
       
       <guid>https://dunderhay.github.io/posts/physec/improving-general-lock-security/</guid>
       <description>A quick look at some basic pin-tumbler locks and how we can modify them to make them a bit more pick resistant</description>
+      
     </item>
     
     <item>
@@ -23,6 +25,7 @@
       
       <guid>https://dunderhay.github.io/posts/physec/clone-mifare-classic-1k-tag-to-chameleon-mini-reve-rebooted/</guid>
       <description>How to clone Mifare Classic 1k tags onto the Chameleon Mini RevE Rebooted</description>
+      
     </item>
     
     <item>
@@ -32,6 +35,7 @@
       
       <guid>https://dunderhay.github.io/posts/physec/remotebox/</guid>
       <description>Creating a remote access drop box for red teaming</description>
+      
     </item>
     
   </channel>

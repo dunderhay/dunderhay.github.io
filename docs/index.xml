@@ -6,7 +6,18 @@
     <description>Recent content on phish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <lastBuildDate>Sun, 16 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Set Up Evilginx3</title>
+      <link>https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/</link>
+      <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dunderhay.github.io/posts/phishing/evilginx3-setup-tutorial/</guid>
+      <description>Quick tutorial on how to set up evilginx3 phishing framework</description>
+      
+    </item>
+    
     <item>
       <title>AD CS NTLM Relay Attack from Linux</title>
       <link>https://dunderhay.github.io/posts/ad/attacking-adcs-esc8/</link>

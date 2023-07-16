@@ -6,6 +6,7 @@
     <description>Recent content in buffer overflow on phish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    
     <lastBuildDate>Wed, 20 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/tags/buffer-overflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exploiting vulnserver: kstet</title>
@@ -14,6 +15,7 @@
       
       <guid>https://dunderhay.github.io/posts/vulnserver/kstet/</guid>
       <description>Egg Hunter</description>
+      
     </item>
     
     <item>
@@ -23,6 +25,7 @@
       
       <guid>https://dunderhay.github.io/posts/vulnserver/gmon/</guid>
       <description>SEH Overflow</description>
+      
     </item>
     
     <item>
@@ -32,6 +35,7 @@
       
       <guid>https://dunderhay.github.io/posts/vulnserver/trun/</guid>
       <description>Vanilla Stack Overflow</description>
+      
     </item>
     
     <item>
@@ -41,6 +45,7 @@
       
       <guid>https://dunderhay.github.io/posts/vulnserver/intro/</guid>
       <description>I am currently doing OSCE / CTP exam preparation exploiting vulnserver.exe</description>
+      
     </item>
     
   </channel>

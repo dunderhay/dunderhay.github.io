@@ -6,6 +6,7 @@
     <description>Recent content in XSS on phish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    
     <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://dunderhay.github.io/tags/xss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Stored XSS in Piwigo 2.6.0 -&gt; 2.9.0 beta1</title>
@@ -14,6 +15,7 @@
       
       <guid>https://dunderhay.github.io/posts/bugs/piwigo-stored-xss/</guid>
       <description>A weaponized stored XSS example</description>
+      
     </item>
     
   </channel>

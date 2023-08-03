@@ -46,9 +46,9 @@ For the NTLM relay attack to work, the following conditions need to be true:
 
 - NTLM-based authentication is supported and Extended Protection for Authentication (EPA) is not configured (these are the default settings)
 
-	NTLM Auth Enabled | EAP Disabled
-	--- | ---
-	![NTLM Auth Enabled](/images/ad/adcs-esc8/ntlm-based-auth-enabled.png) | ![EAP Disabled](/images/ad/adcs-esc8/eap-disabled.png)
+| NTLM Auth Enabled | EAP Disabled |
+| ----------------- | ------------ |
+| ![NTLM Auth Enabled](/images/ad/adcs-esc8/ntlm-based-auth-enabled.png) | ![EAP Disabled](/images/ad/adcs-esc8/eap-disabled.png) |
 
 If you are building a lab to test this on yourself, keep in mind that:
 
